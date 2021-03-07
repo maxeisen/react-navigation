@@ -23,9 +23,12 @@ class WebScreen extends React.Component<
 
     return (
       <View
-        // @ts-expect-error: hidden exists on web, but not in React Native
         hidden={!active}
-        style={[style, { display: active ? 'flex' : 'none' }]}
+        style={[
+          style,
+          // @ts-expect-error: contentVisibility is a web specific property
+          { display: active ? 'flex' : 'none', contentVisibility: 'auto' },
+        ]}
         {...rest}
       />
     );

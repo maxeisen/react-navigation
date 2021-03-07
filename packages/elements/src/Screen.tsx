@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import {
   useSafeAreaFrame,
   useSafeAreaInsets,
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column-reverse',
+    ...(Platform.OS === 'web' ? { contentVisibility: 'auto' } : null),
   },
   // This is necessary to avoid applying 'column-reverse' to screen content
   content: {
